@@ -23,6 +23,12 @@ public class PostTest {
     }
 
     @Test
+    public void post_instantiatesWithCorrectAuthor() throws Exception{
+        Post testPost = setUpPost();
+        assertEquals("Niki Lauda", testPost.getAuthor());
+    }
+
+    @Test
     public void post_instantiatesWithCorrectTitle() throws Exception{
         Post testPost = setUpPost();
         assertEquals("Subaru wins Again!!", testPost.getTitle());
@@ -36,6 +42,6 @@ public class PostTest {
 
     // Helper methods
     public Post setUpPost(){
-        return new Post("Subaru wins Again!!", "Subaru with quickest manual shifts");
+        return new Post("Niki Lauda","Subaru wins Again!!", "Subaru with quickest manual shifts");
     }
 }
