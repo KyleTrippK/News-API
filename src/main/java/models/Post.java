@@ -1,14 +1,23 @@
 package models;
 
 public class Post {
+    private String author;
     private String title;
     private String content;
     private int id;
 
 
-    public Post(String title, String content) {
+    public Post(String author, String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getTitle() {
@@ -25,5 +34,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
