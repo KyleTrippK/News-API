@@ -4,7 +4,6 @@ import dao.Sql2oPostsDao;
 import models.Departments;
 import models.Post;
 import dao.Sql2oDepartmentsDao;
-import dao.Sql2oPostsDao;
 import org.sql2o.Sql2o;
 
 import java.sql.Connection;
@@ -28,15 +27,15 @@ public class App {
 
         post("/department/new", "application/json", (req, res) -> {
             Departments department = gson.fromJson(req.body(), Departments.class);
-            departments.create(department);
+            departments.add(department);
             res.status(201);
             res.type("application/json");
             return gson.toJson(department);
         });
 
-        post("/news/new", "application/json", (req, res) -> {
+        post("/posts/new", "application/json", (req, res) -> {
             Post post = gson.fromJson(req.body(), Post.class);
-            sql2opost.create(post);
+            sql2opost.add(post);
             res.status(201);
             res.type("application/json");
             return gson.toJson(post);
