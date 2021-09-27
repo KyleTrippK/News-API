@@ -35,17 +35,21 @@ public class Sql2oPostsDao implements PostsDao {
         }
     }
 
-//    @Override
-//    public Post findById(int id) {
-//        return null;
-//    }
+    @Override
+    public Post findById(int id) {
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM posts WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Post.class);
+        }
+    }
 
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from posts WHERE id = :id";
         try (Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("id", id)
+//                    .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
