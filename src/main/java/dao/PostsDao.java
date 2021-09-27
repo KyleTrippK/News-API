@@ -11,7 +11,7 @@ public interface PostsDao {
 
         // read
         List<Post> getAll();
-        //Post findById(int id);
+        Post findById(int id);
 
         //delete
         void deleteById(int id);

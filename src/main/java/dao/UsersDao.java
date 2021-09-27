@@ -1,5 +1,6 @@
 package dao;
 
+import models.Departments;
 import models.User;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface UsersDao {
 
     // read
     List<User> getAll();
-    //User findById(int id);
+    User findById(int id);
 
     //delete
     void deleteById(int id);
