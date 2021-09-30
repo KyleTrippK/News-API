@@ -28,15 +28,27 @@ public class DepartmentsTest {
         assertEquals("Politics", testDepartments.getName());
     }
 
+//    @Test
+//    public void departments_setsName() throws Exception{
+//        Departments testDepartments = setupDepartment();
+//        assertEquals("sports", testDepartments.setName("sports"));
+//    }
+
     @Test
     public void departments_instantiatesWithCorrectDescription() throws Exception{
         Departments testDepartments = setupDepartment();
         assertEquals("Get all information in the world of politics", testDepartments.getDescription());
     }
 
+    @Test
+    public void departments_instantiatesWithCorrectMembers() throws Exception{
+        Departments testDepartments = setupDepartment();
+        assertEquals(5, testDepartments.getMembers());
+    }
+
     
     // Helper methods
     public Departments setupDepartment() {
-        return new Departments("Politics", "Get all information in the world of politics");
+        return new Departments("Politics", "Get all information in the world of politics", 4);
     }
 }
