@@ -22,6 +22,7 @@ public class Sql2oUserDao implements UsersDao{
         try (Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(user)
+                    .throwOnMappingFailure(false)
                     .executeUpdate()
                     .getKey();
             user.setId(id);

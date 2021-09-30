@@ -15,10 +15,11 @@ public class Sql2oPostsDao implements PostsDao {
 
     @Override
     public void add(Post post) {
-        String sql = "INSERT INTO posts (author, title, content, id) VALUES (:author, :title, :content, :id)";
+        String sql = "INSERT INTO posts (author, title, content) VALUES (:author, :title, :content)";
         try (Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(post)
+                    .throwOnMappingFailure(false)
                     .executeUpdate()
                     .getKey();
             post.setId(id);

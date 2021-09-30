@@ -1,7 +1,6 @@
 package dao;
 
 import models.Departments;
-import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -16,7 +15,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao {
 
     @Override
     public void add(Departments department) {
-        String sql = "INSERT INTO departments (names, userDepartment, userPosition, role, departmentId) VALUES (:names, :userDepartment, :userPosition, :role, :departmentId)";
+        String sql = "INSERT INTO departments (names, description, members) VALUES (:names, :description, :members)";
         try (Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(department)
@@ -27,19 +26,6 @@ public class Sql2oDepartmentsDao implements DepartmentsDao {
             System.out.println(ex);
         }
     }
-
-//    @Override
-//    public void assignUsersSDepartments(Departments department, User user) {
-//        String sql = "INSERT INTO user_departments (user_Id, department_Id) VALUES (:user_Id, :department_Id)";
-//        try (Connection con = sql2o.open()) {
-//            con.createQuery(sql)
-//                    .addParameter("user_Id", user.getId())
-//                    .addParameter("department_Id", department.getId())
-//                    .executeUpdate();
-//        } catch (Sql2oException ex) {
-//            System.out.println(ex);
-//        }
-//    }
 
 
     @Override
@@ -59,18 +45,11 @@ public class Sql2oDepartmentsDao implements DepartmentsDao {
         }
     }
 
-
-//    @Override
-//    public List<User> getAllUsersInDepartment(int User_Id) {
-//        return null;
-//    }
-
     @Override
     public void deleteById(int id) {
         String sql = "DELETE FROM departments WHERE id = :id";
         try (Connection con = sql2o.open()){
             con.createQuery(sql)
-//                    .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
