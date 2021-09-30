@@ -1,14 +1,16 @@
 package models;
 
 public class Departments {
+    private int id;
     private String names;
     private String description;
     private int members;
-    private int id;
 
-    public Departments(String names, String description) {
+    public Departments(String names, String description, int members) {
         this.names = names;
         this.description = description;
+        this.members = members;
+
     }
 
     public String getName() {
